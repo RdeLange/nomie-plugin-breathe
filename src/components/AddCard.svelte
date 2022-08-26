@@ -3,6 +3,19 @@ import { createEventDispatcher } from 'svelte';
 import { OverflowMenu, OverflowMenuItem } from "carbon-components-svelte";
 import Add from "carbon-icons-svelte/lib/Add.svelte";
 import {breathingTemplates} from "../breathingTemplates";
+
+
+export let amountofcards = 3;
+let direction = "bottom";
+
+$: if(amountofcards > 3) {
+    direction = "top"
+}
+else {direction = "bottom"}
+
+console.log(amountofcards);
+console.log(direction);
+
 const dispatch = createEventDispatcher();
 </script>
 
@@ -10,7 +23,7 @@ const dispatch = createEventDispatcher();
     <div class="actions">
     </div>
     <h3>
-    <OverflowMenu icon={Add} flipped direction="top">
+    <OverflowMenu icon={Add} direction={direction}>
 
         <OverflowMenuItem text="Create Custom" on:click={()=>{dispatch("addnew")}}/>
         <hr>

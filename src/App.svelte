@@ -52,7 +52,7 @@
       setTimeout(async() => {
         await plugin.storage.init();
       breathings = plugin.storage.getItem('breathings') || [];
-      config = plugin.storage.getItem('configuration') || {trackers:["none","none"],trackeroverrule:true,logentry:"Just finished <breathing> exercise with total of <repeats> repeats taking <minutes>."};},500);
+      config = plugin.storage.getItem('configuration') || {trackers:["none","none"],trackeroverrule:true,logentry:"Just finished <breathing> exercise with total of <repeats> repeats taking <minutes>."};amountofcards = breathings.length;},500);
 
       setTimeout(loadInitParams,500);
       setTimeout(() => {if(plugin.prefs != undefined) {isNomie = true}},500)
@@ -91,6 +91,7 @@ let trackers = [];
 let color = "";
 let breathings = [];
 let config = {};
+let amountofcards = 0;
 
 //let breathings = JSON.parse(readFromLS('breathings')) || [];
 //let config = JSON.parse(readFromLS('configuration')) || {trackers:["none","none"],trackeroverrule:true,logentry:"Just finished <breathing> breathing exercise with total of <repeats> repeats taking <minutes> minutes"};
@@ -99,6 +100,7 @@ let isAddMode = false;
 let isBreathingMode = false;
 let isGeneralSettingsMode = false;
 let isInfoMode = false;
+
 
 
 // Method to add a breathing    
@@ -189,6 +191,7 @@ const resetAndSave = breathings => {
 		reset();
 		//saveToLS('breathings', breathings);
     plugin.storage.setItem('breathings', breathings);
+    amountofcards = breathings.length;
 }
 
 // Method to save from Template
@@ -310,7 +313,7 @@ on:loaded="{onLoaded}" />
               on:showinfo={() => showInfo(breathing.id)} />
 					{/each}
         {/if}
-        <AddCard on:addnew={newbreathing} on:addbytemplate={saveTemplate}/>
+        <AddCard bind:amountofcards={amountofcards} on:addnew={newbreathing} on:addbytemplate={saveTemplate}/>
 
 			</div>
 		</div>
