@@ -8,13 +8,11 @@ import {breathingTemplates} from "../breathingTemplates";
 export let amountofcards = 3;
 let direction = "bottom";
 
-$: if(amountofcards > 3) {
+$: if(amountofcards > 2) {
     direction = "top"
 }
 else {direction = "bottom"}
 
-console.log(amountofcards);
-console.log(direction);
 
 const dispatch = createEventDispatcher();
 </script>
