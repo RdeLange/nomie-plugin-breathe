@@ -24,8 +24,7 @@
   } from "carbon-components-svelte";
   import SettingsAdjust from "carbon-icons-svelte/lib/SettingsAdjust.svelte";
   import Sun from "carbon-icons-svelte/lib/Sun.svelte";
-  import { fade, scale } from 'svelte/transition';
-  import { quintOut } from 'svelte/easing';
+  import Information from "carbon-icons-svelte/lib/Information.svelte";
 
   
   let isSideNavOpen = false;
@@ -272,7 +271,7 @@ on:loaded="{onLoaded}" />
   <HeaderUtilities>
     <HeaderGlobalAction aria-label="Settings" icon={SettingsAdjust} on:click={showSettings}/>
     <HeaderGlobalAction aria-label="Theme" icon={Sun} on:click={toggleTheme}/>
-    <HeaderGlobalAction aria-label="Theme" icon={Sun} on:click={showInformation}/>
+    <HeaderGlobalAction aria-label="Theme" icon={Information} on:click={showInformation}/>
   </HeaderUtilities>
 </Header>
 

@@ -26,16 +26,24 @@
       <h5 style="text-align:center">General Information</h5>
       <hr><br>
      
-     <h4>Additional Log Entry Input:</h4>
+     <h4>General:</h4>
+     <h6>This is a plugin for Nomie 6. This plugin will support guided breathings. After a breathing exercise the plugin will log the results (repeats & total time) in Nomie</h6>
+     <hr><br>
+     <h4>Licence:</h4>
+     <h6>The Nomie Breathe Plugin is licenced under the MIT licence</h6>
+     <h6>Copyright Ronald de Lange.
+        Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+        The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+     </h6>
+      <hr><br>
+     <h4>Support:</h4>
+     <h6>Please contact me @ ronald_de_lange@hotmail.com</h6>
      
     </ModalBody>
     <ModalFooter
-      primaryButtonText="Update & Exit"
-      primaryButtonDisabled={false} 
-      secondaryButtons={[{ text: "Cancel" }]}
-      on:click:button--secondary={({ detail }) => {
-        if (detail.text === "Cancel") exitInfo(); 
-      }}
+      primaryButtonText="Exit"
+      primaryButtonDisabled={false}
     />
   </ComposedModal>
 
@@ -47,17 +55,13 @@
 		font-weight: 400;
 	}
 
+
   h6 {
         margin: 0;
         padding: 0;
-		font-size: 0.8em;
-		font-weight: 300;
-	}
-
-  p {
-        height: 45px;
-        line-height: 45px;
-        text-align: center;
+        text-align: left;
+        font-size: 1em;;
+        font-weight:200;
       }
 
 
