@@ -26,7 +26,7 @@
   import Sun from "carbon-icons-svelte/lib/Sun.svelte";
   import Information from "carbon-icons-svelte/lib/Information.svelte";
 
-  
+  let isNomie = false;
   let isSideNavOpen = false;
   let isOpen1 = false;
   let isOpen2 = false;
@@ -52,9 +52,10 @@
       setTimeout(async() => {
         await plugin.storage.init();
       breathings = plugin.storage.getItem('breathings') || [];
-      config = plugin.storage.getItem('configuration') || {trackers:["none","none"],trackeroverrule:true,logentry:"Just finished <breathing> exercise with total of <repeats> repeats taking <minutes>."};},300);
+      config = plugin.storage.getItem('configuration') || {trackers:["none","none"],trackeroverrule:true,logentry:"Just finished <breathing> exercise with total of <repeats> repeats taking <minutes>."};},500);
 
-      setTimeout(loadInitParams,300);
+      setTimeout(loadInitParams,500);
+      setTimeout(() => {if(plugin.prefs != undefined) {isNomie = true}},500)
   }
 
 
@@ -264,10 +265,12 @@ onMount(function() {
 on:loaded="{onLoaded}" />
 
 <Theme bind:theme />
+{#if isNomie}
 <Header company="Nomie6" platformName="Breathe Plugin" bind:isSideNavOpen>
   <svelte:fragment slot="skip-to-content">
     <SkipToContent />
   </svelte:fragment>
+  
   <HeaderUtilities>
     <HeaderGlobalAction aria-label="Settings" icon={SettingsAdjust} on:click={showSettings}/>
     <HeaderGlobalAction aria-label="Theme" icon={Sun} on:click={toggleTheme}/>
@@ -331,6 +334,13 @@ on:loaded="{onLoaded}" />
 {#if isInfoMode}
 <InfoModal on:exitsettings={()=>{isInfoMode=false}}></InfoModal>
 {/if}
+
+{:else}
+        <h1 style="text-align:center">🫁</h1>
+        <h2 style="text-align:center">Nomie Breathe</h2>
+        <h5 style="text-align:center">This is a plugin for Nomie</h5>
+{/if}
+
 
 
 <style>
