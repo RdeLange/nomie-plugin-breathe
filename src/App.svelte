@@ -294,8 +294,7 @@ on:loaded="{onLoaded}" />
         <Tile>
           <p class="no-breathing">
 						No Breathing Exercises? Oh dear, please add one to start practicing. 
-            You can enroll templates via the config menu => <SettingsAdjust size={20} style="display:table-cell;vertical-align:middle;margin-top:0px"/>
-					</p>
+          </p>
           
         </Tile>
 				{:else}
