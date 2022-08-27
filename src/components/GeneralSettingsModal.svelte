@@ -17,6 +17,7 @@
    
     export let plugin;
     export let config;
+    export let theme;
     let open=true;
     
     let trackeroverrule = true;
@@ -28,7 +29,16 @@
     let exercisetemplates = [];
     const dispatch = createEventDispatcher();
 
-    
+    // Set background
+	let themecolor = "#E9E9E9";
+	let themefont = "#161616"
+	if(theme=="g10"){
+		themecolor = "grey";
+		themefont = "#161616"
+	}
+	else {themecolor = "lightgrey";
+	themefont = "#F4F4F4"}
+
     $: if(config){
       initConfig();
     }
@@ -114,25 +124,26 @@
       <h2 style="text-align:center">Nomie Breathe</h2>
       <h5 style="text-align:center">General Settings</h5>
       <hr><br>
+      <h4>Nomie Log Settings:</h4>
       <Checkbox disabled labelText="Overrule individual Tracker Alignment" bind:trackeroverrule />
-
-      <h4>Exercise Repeats:</h4>
+      <h3>Exercise Repeats:</h3>
       <tr>
-        <td style="vertical-align:middle; text-align:center;width:20px"><span on:click={()=>{removeTracker(0)}}><CheckboxIndeterminate size={32} style="cursor: pointer;display:table-cell;vertical-align:middle;margin-top:0px"></CheckboxIndeterminate></span></td>
-        <td style="vertical-align:middle; text-align:center;width:20px"><span on:click={()=>{addTracker(0)}}><List size={32} style="cursor: pointer;display:table-cell;vertical-align:middle;margin-top:0px"></List></span></td>
-        <td style="vertical-align:middle ;text-align:left;width:250px"><p style="display:inline;font-weight:500;text-align:left;vertical-align:middle;">{trackersDisplay[0]}</p></td>
+        <td style="vertical-align:middle; text-align:center;width:20px"><span on:click={()=>{removeTracker(0)}}><CheckboxIndeterminate size={32} style="color:{themecolor};cursor: pointer;display:table-cell;vertical-align:middle;margin-top:0px"></CheckboxIndeterminate></span></td>
+        <td style="vertical-align:middle; text-align:center;width:20px"><span on:click={()=>{addTracker(0)}}><List size={32} style="color:{themecolor};cursor: pointer;display:table-cell;vertical-align:middle;margin-top:0px"></List></span></td>
+        <td style="vertical-align:middle ;text-align:left;width:250px"><p style="display:inline;font-weight:300;text-align:left;vertical-align:middle;">{trackersDisplay[0]}</p></td>
      </tr>
-     <h4>Exercise Total Time:</h4>
+     <h3>Exercise Total Time:</h3>
       <tr>
-        <td style="vertical-align:middle; text-align:center;width:20px"><span on:click={()=>{removeTracker(1)}}><CheckboxIndeterminate size={32} style="cursor: pointer;display:table-cell;vertical-align:middle;margin-top:0px"></CheckboxIndeterminate></span></td>
-        <td style="vertical-align:middle; text-align:center;width:20px"><span on:click={()=>{addTracker(1)}}><List size={32} style="cursor: pointer;display:table-cell;vertical-align:middle;margin-top:0px;"></List></span></td>
-        <td style="vertical-align:middle ;text-align:left;width:250px"><p style="display:inline;font-weight:500;text-align:left;vertical-align:middle;">{trackersDisplay[1]}</p></td>
+        <td style="vertical-align:middle; text-align:center;width:20px"><span on:click={()=>{removeTracker(1)}}><CheckboxIndeterminate size={32} style="color:{themecolor};cursor: pointer;display:table-cell;vertical-align:middle;margin-top:0px"></CheckboxIndeterminate></span></td>
+        <td style="vertical-align:middle; text-align:center;width:20px"><span on:click={()=>{addTracker(1)}}><List size={32} style="color:{themecolor};cursor: pointer;display:table-cell;vertical-align:middle;margin-top:0px;"></List></span></td>
+        <td style="vertical-align:middle ;text-align:left;width:250px"><p style="display:inline;font-weight:300;text-align:left;vertical-align:middle;">{trackersDisplay[1]}</p></td>
      </tr>
-     <h4>Additional Log Entry Input:</h4>
-     <TextInput bind:value={logentry} labelText="Log Entry" placeholder="Enter additional Log input..."  helperText="You can include a reference to the related Breathing Exercise. For instance: Results of my <breathing> are a total of <repeats> repeats taking <minutes>."/>
+     <h3>Additional Log Entry Input:</h3>
+     <TextInput bind:value={logentry} placeholder="Enter additional Log input..."  helperText="You can include a reference to the related Breathing Exercise. For instance: Results of my <breathing> are a total of <repeats> repeats taking <minutes>."/>
       <hr>
+      <br>
       <h4>Reset to initial setup:</h4>
-      <h6>This will remove all exercises created and enroll the standard exercises</h6>
+      <h6>This will remove all exercises and reset settings</h6>
       <Button on:click={reset}>Reset</Button>
       
     
@@ -167,6 +178,9 @@
         line-height: 45px;
         text-align: center;
       }
-
+  h3 {
+    font-size:1.2em;
+    font-weight: 300;
+  }
 
   </style>

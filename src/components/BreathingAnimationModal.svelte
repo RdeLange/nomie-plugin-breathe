@@ -56,6 +56,7 @@
       else {running = false}
     }
 
+    
 function startBreathing(){
   totalTime = 1000*(breathing.exercise[0] + breathing.exercise[1] + breathing.exercise[2] + breathing.exercise[3]);
 breathId = null;  
@@ -77,17 +78,18 @@ repeatstogo = repeats-repeatcount;
   setTimeout(()=>{status="paused";phase = "Paused"}, totalTime);
   setTimeout(()=>{logBreathing()}, totalTime+100);}
   
-  phase = 'Breath In';
+  phase = 'Breathe In';
   phaseid = 'inhale';
   
   setTimeout(function(){
     if(breathing.exercise[1] > 0){
     phase = 'Hold On';
     phaseid = "hold1";}
-   
+    
     setTimeout(function(){
-      phase = 'Breath Out';
-      phaseid = "exhale";
+      if(breathing.exercise[2] > 0){
+      phase = 'Breathe Out';
+      phaseid = "exhale";}
       setTimeout(function(){
         if(breathing.exercise[3] > 0){
         phase = 'Hold On';
@@ -96,8 +98,13 @@ repeatstogo = repeats-repeatcount;
 }
 
 function exitBreathing(){
-        dispatch("exit");
-        open = false;
+    clearInterval(breathId);
+    repeatcount=0;
+    phase = "Paused";
+    phaseid = "paused";
+    status = "paused";
+    dispatch("exit");
+    open = false;
     }
 
 async function logBreathing(){

@@ -38,7 +38,7 @@
         className = "animationcontainer start";
     }
 
-$: if(phase){
+$: if(phaseid){
     if(phaseid =="inhale"){
         className = "animationcontainer grow";
         duration = (inhale/1000)+"s";
@@ -50,9 +50,11 @@ $: if(phase){
         duration = (exhale/1000)+"s";
     }
     else if(phaseid =="hold1"){
+        className = "animationcontainer hold1";
         duration = (hold1/1000)+"s";
     }
     else if(phaseid =="hold2"){
+        className = "animationcontainer hold2";
         duration = (hold2/1000)+"s";
     }
 }    
@@ -162,6 +164,10 @@ onMount(() => {
     }
 }
 
+.animationcontainer.hold1 {
+    transform: scale(0.9)
+}
+
 .animationcontainer.shrink {
     /*animation: shrink 3s linear forwards;*/
     animation-name: shrink;
@@ -178,7 +184,9 @@ onMount(() => {
         transform: scale(0.7);
     }
 }
-
+.animationcontainer.hold2 {
+    transform: scale(0.7)
+}
 
 </style>
 {#if isrefreshed}

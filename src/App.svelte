@@ -331,7 +331,7 @@ on:loaded="{onLoaded}" />
 {/if}
 
 {#if isGeneralSettingsMode}
-<GeneralSettingsModal on:resetall={resetAll} on:savetemplate={saveTemplate} bind:config bind:plugin on:savesettings={saveSettings} on:exitsettings={()=>{isGeneralSettingsMode=false}}></GeneralSettingsModal>
+<GeneralSettingsModal bind:theme={theme} on:resetall={resetAll} on:savetemplate={saveTemplate} bind:config bind:plugin on:savesettings={saveSettings} on:exitsettings={()=>{isGeneralSettingsMode=false}}></GeneralSettingsModal>
 {/if}
 
 {#if isInfoMode}
