@@ -134,7 +134,7 @@ if(config.trackeroverrule){
         const result = minute + " minutes " + rest_seconds + " seconds"
         logentry = logentry.replace("<minutes>", result);
         logentry = logentry.replace("<breathing>", exercisename);
-        const note = "Nomie Breathing 🫁:\n"+logentry+"\n\n"+trackinglog;
+        const note = "Nomie Breathe 🫁:\n"+logentry+"\n\n"+trackinglog;
         dispatch("logbreathing",note);
         }
       }
