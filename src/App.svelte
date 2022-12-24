@@ -32,6 +32,7 @@
   let isOpen2 = false;
   let theme = "g10";
   let plugin;
+  var parent = "";
 
   
   // Load Plugin js
@@ -39,9 +40,9 @@
   async function onLoaded() {
     console.log("Nomie Plugin library https://plugins.nomie.app/v1/nomie-plugin.js Loaded");
     plugin = await new NomiePlugin({
-        name: "Nomie Breathe",
+        name: "Breathe Plugin",
         emoji: "🫁",
-        description: "Nomie Breathing Exercises Plugin",
+        description: "Breathing Exercises Plugin",
         uses: ["createNote", "getLocation", "selectTrackables","getTrackable"],
         version: "0.21",
         addToCaptureMenu: true,
@@ -61,6 +62,7 @@
 
   // Load init params
   function loadInitParams() {
+    parent = getParentUrl();
     if (plugin.prefs.theme == "light") {
       theme = "g10"}
     else if (plugin.prefs.theme == "dark") {
@@ -81,6 +83,25 @@
     else {
       theme = "white"}
  }
+
+ // Get parent
+ function getParentUrl() {
+    var isInIframe = (parent !== window),
+        parentUrl = null;
+
+    var parentfound = null;
+    
+    if (isInIframe) {
+        parentUrl = document.referrer;
+    }
+
+    if (parentUrl.includes("nomie") ) {
+      parentfound = "Nomie"
+    }
+    else {parentfound = "Smarter4Ever"}
+
+    return parentfound;
+}
 
  // below is plugin specific code
 let id;
@@ -269,7 +290,7 @@ on:loaded="{onLoaded}" />
 
 <Theme bind:theme />
 {#if isNomie}
-<Header company="Nomie6" platformName="Breathe Plugin" bind:isSideNavOpen>
+<Header company={parent} platformName="Breathe Plugin" bind:isSideNavOpen>
   <svelte:fragment slot="skip-to-content">
     <SkipToContent />
   </svelte:fragment>
@@ -335,13 +356,13 @@ on:loaded="{onLoaded}" />
 {/if}
 
 {#if isInfoMode}
-<InfoModal on:exitsettings={()=>{isInfoMode=false}}></InfoModal>
+<InfoModal parent={parent} on:exitsettings={()=>{isInfoMode=false}}></InfoModal>
 {/if}
 
 {:else}
         <h1 style="text-align:center">🫁</h1>
-        <h2 style="text-align:center">Nomie Breathe</h2>
-        <h5 style="text-align:center">This is a plugin for Nomie</h5>
+        <h2 style="text-align:center">Breathe Plugin</h2>
+        <h5 style="text-align:center">This is a plugin for {parent}</h5>
 {/if}
 
 

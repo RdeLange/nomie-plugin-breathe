@@ -8,6 +8,7 @@
       ModalFooter,
     } from "carbon-components-svelte";
    
+    export let parent;
    let open=true;
    const dispatch = createEventDispatcher();
 
@@ -19,18 +20,18 @@
 
 
 <ComposedModal bind:open on:close={() => { exitInfo();}} on:submit={() => { exitInfo();}} >
-    <ModalHeader label="Nomie Breathe" title="General Information" />
+    <ModalHeader label="{parent} Breathing" title="General Information" />
     <ModalBody>
       <h1 style="text-align:center">🫁</h1>
-      <h2 style="text-align:center">Nomie Breathe</h2>
+      <h2 style="text-align:center">Breathing Plugin</h2>
       <h5 style="text-align:center">General Information</h5>
       <hr><br>
      
      <h4>General:</h4>
-     <h6>This is a plugin for Nomie 6. This plugin will support guided breathings. After a breathing exercise the plugin will log the results (repeats & total time) in Nomie</h6>
+     <h6>This is a plugin for {parent}. This plugin will support guided breathings. After a breathing exercise the plugin will log the results (repeats & total time) in {parent}</h6>
      <hr><br>
      <h4>Licence:</h4>
-     <h6>The Nomie Breathe Plugin is licenced under the MIT licence</h6>
+     <h6>The {parent} Breathing Plugin is licenced under the MIT licence</h6>
      <h6>Copyright Ronald de Lange.
         Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
         The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
