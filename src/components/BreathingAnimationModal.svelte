@@ -20,6 +20,7 @@
     export let breathing = {id:"123",name: "Default Breathing",description:"This is a default Breathing Exercise",exercise:[5,5,5,5,2],trackers:["None","None"],color:"#C7DBF5"};
     export let config;
     export let plugin;
+    export let parent;
     
     const dispatch = createEventDispatcher();
     let exercisename = breathing.name;
@@ -113,7 +114,7 @@ async function logBreathing(){
 if(config.trackeroverrule){
   if(config.trackers[0] != "none" || config.trackers[1] != "none") {
     var res = {};
-    res = await plugin.confirm('Log session to Nomie', 'This will log your session in Nomie as you configured via settings');
+    res = await plugin.confirm('Log session to '+parent, 'This will log your session in '+parent+' as you configured via settings');
    // res.value = confirm("Log session");
       if (res.value) {
         let trackinglog ="";
@@ -134,7 +135,7 @@ if(config.trackeroverrule){
         const result = minute + " minutes " + rest_seconds + " seconds"
         logentry = logentry.replace("<minutes>", result);
         logentry = logentry.replace("<breathing>", exercisename);
-        const note = "Nomie Breathe 🫁:\n"+logentry+"\n\n"+trackinglog;
+        const note = parent+" Breathe 🫁:\n"+logentry+"\n\n"+trackinglog;
         dispatch("logbreathing",note);
         }
       }
@@ -145,11 +146,11 @@ if(config.trackeroverrule){
 
 
 <ComposedModal size="xs" bind:open on:close={() => { exitBreathing();}} on:submit={() => { startBreathing();}}>
-    <ModalHeader label="Nomie Breathe" title={exercisename} />
+    <ModalHeader label="{parent} Breathe" title={exercisename} />
     <ModalBody>
       
       <h1 style="text-align:center">🫁</h1>
-      <h2 style="text-align:center">Nomie Breathe</h2>
+      <h2 style="text-align:center">{parent} Breathe</h2>
       <hr>
              
               

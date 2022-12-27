@@ -18,6 +18,7 @@
     export let plugin;
     export let config;
     export let theme;
+    export let parent;
     let open=true;
     
     let trackeroverrule = true;
@@ -118,13 +119,13 @@
 
 
 <ComposedModal bind:open on:close={() => { exitSettings();}} on:submit={() => { saveSettings();}} >
-    <ModalHeader label="Nomie Breathe" title="General Settings" />
+    <ModalHeader label="{parent} Breathe" title="General Settings" />
     <ModalBody>
       <h1 style="text-align:center">🫁</h1>
-      <h2 style="text-align:center">Nomie Breathe</h2>
+      <h2 style="text-align:center">{parent} Breathe</h2>
       <h5 style="text-align:center">General Settings</h5>
       <hr><br>
-      <h4>Nomie Log Settings:</h4>
+      <h4>Log Settings:</h4>
       <Checkbox disabled labelText="Overrule individual Tracker Alignment" bind:trackeroverrule />
       <h3>Exercise Repeats:</h3>
       <tr>

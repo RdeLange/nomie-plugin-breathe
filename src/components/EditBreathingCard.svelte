@@ -18,6 +18,7 @@
     export let color = "#DAAFE9";
     export let exercise = [5,5,5,5,5];
     export let theme;
+    export let parent;
     const dispatch = createEventDispatcher();
     let open = true;
     let label = "";
@@ -25,13 +26,13 @@
     let dispatchcommand = "";
 
     if (isEditMode) {
-        label = "Nomie Breathe"
+        label = parent+" Breathe"
         title = "Edit Breathing Exercise"
         dispatchcommand = "savechanges";
 
     }
     else {
-        label = "Nomie Breathe"
+        label = parent+" Breathe"
         title = "Add Breathing Exercise"
         dispatchcommand = "addnew";
     }
@@ -49,7 +50,7 @@
     <ModalHeader label={label} title={title} />
     <ModalBody hasForm>
         <h1 style="text-align:center">🫁</h1>
-      <h2 style="text-align:center">Nomie Breathe</h2>
+      <h2 style="text-align:center">{parent} Breathe</h2>
       <h5 style="text-align:center">{title}</h5>
       <hr><br>
         <TextArea rows={1} maxCount={20} labelText="Exercise name" placeholder="Enter breathing exercise name..." bind:value={name}/>

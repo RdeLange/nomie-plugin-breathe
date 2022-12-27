@@ -38,7 +38,6 @@
   // Load Plugin js
   let PlugiAapiUrl = "https://plugins.nomie.app/v1/nomie-plugin.js";
   async function onLoaded() {
-    console.log("Nomie Plugin library https://plugins.nomie.app/v1/nomie-plugin.js Loaded");
     plugin = await new NomiePlugin({
         name: "Breathe Plugin",
         emoji: "🫁",
@@ -307,7 +306,7 @@ on:loaded="{onLoaded}" />
     <Row>
       <Column>
         <h1 style="text-align:center">🫁</h1>
-        <h2 style="text-align:center">Nomie Breathe</h2>
+        <h2 style="text-align:center">Breath Plugin</h2>
         <h5 style="text-align:center">Choose your breathing exercise</h5>
         <hr><br>
       </Column>
@@ -344,15 +343,15 @@ on:loaded="{onLoaded}" />
   </Grid>
 </Content>
 {#if isEditMode || isAddMode}
-<EditBreathingCard bind:theme={theme} on:addnew={addbreathing} on:savechanges={addbreathing} bind:name bind:description bind:color bind:exercise bind:trackers bind:isEditMode={isEditMode} bind:isAddMode={isAddMode}></EditBreathingCard>
+<EditBreathingCard parent={parent} bind:theme={theme} on:addnew={addbreathing} on:savechanges={addbreathing} bind:name bind:description bind:color bind:exercise bind:trackers bind:isEditMode={isEditMode} bind:isAddMode={isAddMode}></EditBreathingCard>
 {/if}
 
 {#if isBreathingMode}
-<BreathingAnimation on:exit={()=>{isBreathingMode=false}} on:logbreathing={logBreathing} bind:plugin bind:config breathing={{"name":name,"description":description,"color":color,"exercise":exercise,"trackers":trackers}}></BreathingAnimation>
+<BreathingAnimation on:exit={()=>{isBreathingMode=false}} on:logbreathing={logBreathing} parent={parent} bind:plugin bind:config breathing={{"name":name,"description":description,"color":color,"exercise":exercise,"trackers":trackers}}></BreathingAnimation>
 {/if}
 
 {#if isGeneralSettingsMode}
-<GeneralSettingsModal bind:theme={theme} on:resetall={resetAll} on:savetemplate={saveTemplate} bind:config bind:plugin on:savesettings={saveSettings} on:exitsettings={()=>{isGeneralSettingsMode=false}}></GeneralSettingsModal>
+<GeneralSettingsModal parent={parent} bind:theme={theme} on:resetall={resetAll} on:savetemplate={saveTemplate} bind:config bind:plugin on:savesettings={saveSettings} on:exitsettings={()=>{isGeneralSettingsMode=false}}></GeneralSettingsModal>
 {/if}
 
 {#if isInfoMode}
