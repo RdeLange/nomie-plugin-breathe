@@ -306,7 +306,7 @@ on:loaded="{onLoaded}" />
     <Row>
       <Column>
         <h1 style="text-align:center">🫁</h1>
-        <h2 style="text-align:center">Breath Plugin</h2>
+        <h2 style="text-align:center">Breathe Plugin</h2>
         <h5 style="text-align:center">Choose your breathing exercise</h5>
         <hr><br>
       </Column>
