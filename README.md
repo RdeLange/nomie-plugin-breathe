@@ -28,7 +28,8 @@ The 🫁Nomie Breathe Plugin can be installed in Nomie via the following steps:
 
 After launching the plugin, you will be presented with the main screen. This creen will show all you selected pre-defined exercises and/or your own defined breathings.
 
-![](assets/20230124_222512_image.png)
+
+![](assets/20230124_231105_image.png)
 
 ### Editing an Exercise
 
