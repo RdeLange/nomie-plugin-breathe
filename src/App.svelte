@@ -36,7 +36,7 @@
 
   
   // Load Plugin js
-  let PlugiAapiUrl = "https://plugins.nomie.app/v1/nomie-plugin.js";
+  let PlugiAapiUrl = "https://cdn.jsdelivr.net/gh/open-nomie/plugins/bin/v1/nomie-plugin.js";
   async function onLoaded() {
     plugin = await new NomiePlugin({
         name: "Breathe Plugin",
